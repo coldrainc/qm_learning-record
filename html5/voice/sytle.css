@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 10px;
+
+}
+
+*, *:before,*:after{
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    font-family: sans-serif;
+    background-color: #3bc1ac;
+    display: flex; /*弹性布局*/
+    align-items: center;/*垂直居中*/
+    justify-content: center;/*水平居中*/
+}
+
+.voice_container {
+    width: 50rem;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0px 0 5px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    overflow: hidden;
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+
+}
+
+h1 {
+    padding: 0.5rem;
+    background: #ffc600;
+    border-bottom: 5px solid #F3C010;
+    font-size: 5rem;
+    text-align: center;
+    font-weight: 100;
+    font-family: "Pacifico", cursive;/*使用系统里面的Pacifico字体，如果没有往后使用*/
+    text-shadow: 3px 3px 0 #F3C010;
+}
+.voice_container input,
+.voice_container button,
+.voice_container select,
+.voice_container textarea {
+    width: 100%;
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    border: 0;
+    font-size: 2rem;
+    background: #f7f7f7;
+}
+
+textarea {
+    height: 20rem;
+
+}
+
+.voice_container button{
+    background: #ffc600;
+    border: 0;
+    width: 49%;
+    float: left;
+    position: relative;
+}
+
+.voice_container button:nth-of-type(1){/*nth-child(1)是voice_container的第一个子元素 而nth-of-type是和bottom相同属性的第一个*/
+    margin-right: 2%;
+}
+
+.voice_container button:active{
+    top: 2px;
+}
