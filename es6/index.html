@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>arrow function</title>
+    <style>
+        .wrap{
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: sans-serif;
+            font-weight: 100;
+            color: white;
+
+        }
+        .box{
+            width: 50px;
+            height: 50px;
+            padding: 50px;
+            background: black url(https://unsplash.it/1500/1500?image=560&blur=0.5) center fixed no-repeat;
+            transition: width .2s, height .2s;
+        }
+        .box.opening{
+            width: 500px;
+            height: 500px;
+        }
+        .box h2{
+            position: absolute;
+            width: 100%;   
+            font-size: 100px;
+            top: 0;
+            transform: translateX(-200%);
+            transition: all .5s;
+        }
+        .box p{
+            position: absolute;
+            width: 100%;
+            transform: translateX(200%);
+            transition: all .5s;
+            bottom: 0;
+        }
+
+        .box.open > *{
+            transform: translateX(0%);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="box">
+            <h2>Wes Bos</h2>
+            <p class="social">
+                @wesbos
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const box = document.querySelector('.box');
+        console.log(box.classList);
+        box.addEventListener('click',function(){
+            // this 指向谁？ 时间发生时指向事件发生元素
+            console.log(this);
+            let first = 'opening';
+            let second = 'open';
+            // this.classList.add(first);
+            if(this.classList.contains(first)){
+                [first, second] = [second, first];
+            }
+            this.classList.toggle(first);
+            // toggle
+            // this.classList.toggle(first);
+            // let that = this;
+            setTimeout(() => {
+                // console.log(this);//如果函数是普通函数 使用默认的this指向window也就是全局
+                // 箭头函数内部this 指向父级父级this是box所以settimeout里面就可以使用this了
+                //that.classList.toggle(second);
+
+                this.classList.toggle(second);
+            }, 250);
+
+        });
+        // //js五种数据类型 基本数据类型
+        // const num = 1;
+        // const str = 'abc';
+        // const isOK = false;
+        // const a = undefined;
+        // const b = null;
+        // // object 复杂数据类型
+        // // 祖先都是Object,prototype 链
+        // // 下标为字符串
+        // const obj = {name: '刘强东'};
+        // // 下标为数字对象
+        // const remark = ['不知道妻美', '我到美国是去学习的'];
+        // // 函数是一等公民，是对象
+        // const funcA = function(){
+        //     console.log('help me!');
+        // }
+
+        // console.log(typeof obj,typeof remark, typeof funcA);
+    </script>
+</body>
+</html>
