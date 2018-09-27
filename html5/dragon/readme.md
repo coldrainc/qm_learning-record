@@ -2,7 +2,7 @@
 
 - 手机的尺寸
     px 在手机上有问题
-    css 像素 px retina 750px 
+    css 像素 px retina 750px
     硬件的物理尺寸 iPhone 8 375pt 8 plus 414pt
 
 - 相对单位
