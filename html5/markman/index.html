@@ -38,7 +38,7 @@
             height: 500px;
             /* background-color: green; */
         }
-
+        
         /* 重复地部分，ui组件 */
         .hot-link, .rating-answer{
             line-height: 1.5;
@@ -65,7 +65,7 @@
         .hot-link{
             padding: 16px 0 16px 18px;
         }
-        .hot-link h2{
+        .hot-link h2,.billborad__hd h2{
             margin: 0;
             padding: 0;
             border: none;
@@ -73,12 +73,29 @@
             font-size: 16px;
             
         }
+        .billborad__hd h2{
+            color: black;
+        }
         .hot-link ul{
             font-size: 14px;
             color: #cedcd9
         }
-        .hot-link li{
+        .hot-link li,.billborad li{
             margin-top: 8px;
+            font-size: 13px;
+        }
+        .billborad li{
+            list-style: none;
+            padding: 7px 0;
+            border-bottom: solid 1px slategrey;
+        }
+        .billborad__bd p{
+            display: inline-block;
+            width: 20px;
+            font-size: 13px;
+        }
+        .billborad__hd span{
+            margin-left: 12px;
             font-size: 13px;
         }
     </style>
@@ -108,6 +125,60 @@
                         <a href="#" target="_blank">好莱坞电影工业深度探访交流</a>
                     </li>
                 </ul>
+            </div>
+            <div class="billborad">
+                <div class="billborad__hd">
+                    <h2>
+                        一周口碑榜
+                        <span>
+                            <a href="#">更多榜单》</a>
+                        </span>
+                    </h2>
+                </div>
+                <div class="billborad__bd">
+                    <ul>
+                        <li>
+                            <p>1</p>
+                            <a href="#">one</a>
+                        </li>
+                        <li>
+                            <p>2</p>
+                            <a href="#">one</a>
+                        </li>
+                        <li>
+                            <p>3</p>
+                            <a href="#">one</a>
+                        </li>
+                        <li>
+                            <p>4</p>
+                            <a href="#">one</a>
+                        </li>
+                        <li>
+                            <p>5</p>
+                             <a href="#">one</a>
+                        </li>
+                        <li>
+                            <p>6</p>
+                            <a href="#">one</a>
+                        </li>
+                        <li>
+                            <p>7</p>
+                            <a href="#">one</a>
+                        </li>
+                        <li>
+                            <p>8</p>
+                            <a href="#">one</a>
+                        </li>
+                        <li>
+                            <p>9</p>
+                            <a href="#">one</a>
+                        </li>
+                        <li>
+                            <p>10</p>
+                            <a href="#">one</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
