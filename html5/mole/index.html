@@ -44,19 +44,18 @@
         let lastHole;
         /*状态， 上一次是那个洞 ，新随机生成的一样的话就再随机一次 否则lasthole为新的随机值*/
         let timeUp = false; //游戏结束
-        let isPlaying = false; // 游戏正在运行
+        // let isPlaying = false; // 游戏正在运行
         function startGame() {
-            if (isPlaying) return;
-            isPlaying = true;
             scoreBoard.textContent = 0;
             timeUp = false;
             score = 0;
+            peep();
             setTimeout(() => {
                 timeUp = true;
-                isPlaying = false;
-                alert('游戏结束了');
-            }, 20000)
+                alert('游戏结束');
+            }, 20000);
         }
+
 
         function randomTime(min, max) {
             return Math.round(Math.random() * (max - min) + min);
