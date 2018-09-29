@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>before_after</title>
+    <style>
+        .box{
+            position: relative;
+        }
+        .box::before, .box::after{
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 1px;
+            line-height: 2;
+            background-color: #333;
+        }
+        .box::before{
+            /* content: "before元素开始之前"; */
+            content: "";
+            /* background: red; */
+            top: 0;
+        }
+        .box::after{
+            content: "";
+            /* content: "元素结束之前"; */
+            background: green; 
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        我是一个盒子
+    </div>
+    <script>
+        const holes = document.querySelectorAll('.hole');
+        const scoreBoard = document.querySelector('.score');
+        const moles = document.querySelectorAll('.mole')
+        let score = 0;
+        let lastHole;
+        /*状态， 上一次是那个洞 ，新随机生成的一样的话就再随机一次 否则lasthole为新的随机值*/
+        let timeUp = false;//游戏结束
+        let isPlaying = false;// 游戏正在运行
+        function startGame(){
+            if(isPlaying) return;
+            isPlaying = true;
+            scoreBoard.textContent = 0;
+            timeUp = false;
+            score = 0;
+            setTimeout(() => {
+                timeUp = true;
+                isPlaying = false;
+                alert('游戏结束了');
+            },20000)
+        }
+    </script>
+</body>
+</html>
