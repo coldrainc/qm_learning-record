@@ -1,6 +1,6 @@
 - 语义化标签
     header nav SEO 对机器更友好。
-    logo h1 fz0 图片对机器不诱惑
+    logo h1 fz0 图片对机器不友好
 
 - 良好的结构分析及构建是界面开发的基石
     header+page
