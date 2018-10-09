@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>抛物线运动</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .ball {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: red;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // 抛物线的开始点坐标和结束点坐标
+        let XStart = 0, YStrat = 0, XEnd = 1000, YEnd = 1000;
+        let Time = 520; // 运动时间
+        let XSpeed = (XEnd - XStart) / Time; // 水平方向速度
+        let A = 2 * (YEnd - YStrat) / (Time * Time); // 垂直方向的加速度 x = 1/2*a*t*t
+        let YSpeed = (YEnd - YStrat) / Time;
+
+        // js 动态创建元素
+        let ball = document.createElement("div");
+        ball.className = 'ball';
+        document.body.appendChild(ball);
+        ball.style.top = YStrat + 'px';
+        ball.style.left = XStart + 'px';
+
+        let nowx = XStart;// 当前x的值
+        let nowy = YStrat;// 当前y的值
+        let loop = 0;
+        // 在函数内部再调用函数自身
+        let move = () => {
+            requestAnimationFrame(() => {
+                if (nowy >= nowx){
+                    ball.parentNode.removeChild(ball);
+                    return;
+                }
+                nowx += XSpeed;
+                nowy += A * loop;
+                ball.style.top = nowy + 'px';
+                ball.style.left = nowx + 'px';
+                loop++;
+                move();
+            })
+        };
+        move();
+    </script>
+</body>
+</html>
