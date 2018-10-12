@@ -11,7 +11,74 @@
 
     </div>
     <script>
-        
+        function EditInPlaceField (id, parent, value) {
+            this.id = id;
+            this.parentElement = parent;
+            this.value = value || 'default value';
+            this.createElement();
+        }
+        EditInPlaceField.prototype.createElement = function () {
+            this.containerElement = document.createElement('div');
+            this.parentElement.appendChild(this.containerElement);
+            // span innerHTML this.value  挂载点到containerElement
+            this.staticElement = document.createElement('span');
+            this.containerElement.appendChild(this.staticElement);
+            this.staticElement.innerHTML = this.value;
+
+            this.fieldElement = document.createElement('input');
+            this.fieldElement.type = 'text';
+            this.fieldElement.value = this.value;
+            this.containerElement.appendChild(this.fieldElement);
+
+            this.saveButton = document.createElement('input');
+            this.saveButton.type = 'button';
+            this.saveButton.value = 'save';
+            this.containerElement.appendChild(this.saveButton);
+
+            this.cancelButton = document.createElement('input');
+            this.cancelButton.type = 'button';
+            this.cancelButton.value = 'cancle';
+            this.containerElement.appendChild(this.cancelButton);
+
+            this.convertToText();
+            this.attachEvent();
+            this.staticElement.value = this.value;
+        };
+        EditInPlaceField.prototype.convertToText = function () {
+            this.fieldElement.style.display = 'none';
+            this.saveButton.style.display = 'none';
+            this.cancelButton.style.display = 'none';
+            this.staticElement.style.display = 'block';
+            this.staticElement.value = this.value;
+        };
+        EditInPlaceField.prototype.attachEvent = function () {
+            let that = this;
+            // 这个地方需要注意，因为在使用addEventListenter后里面的函数this指向的staticElement 
+            // 所以需要声明一个变量来保存this这样在函数里面才可以用
+            this.staticElement.addEventListener('click', function () {
+                that.convertToEdittable();                
+            });
+            this.cancelButton.addEventListener('click', function () {
+                that.convertToText();
+            });
+            this.saveButton.addEventListener('click', function () {
+                that.saveText();
+            });
+        };
+        EditInPlaceField.prototype.convertToEdittable = function ( ) {
+            this.fieldElement.style.display = 'inline';
+            this.saveButton.style.display = 'inline';
+            this.cancelButton.style.display = 'inline';
+            this.staticElement.style.display = 'none';
+            this.staticElement.value = this.value;
+        };
+        EditInPlaceField.prototype.saveText = function () {
+            var value = this.fieldElement.value;
+            this.staticElement.innerHTML = value;
+            this.convertToText();
+        };
+        var titleClassical = new EditInPlaceField('titleClassical', document.body, 'Title Here');
+        // console.log(titleClassical.convertToText());
     </script>
 </body>
 </html>
