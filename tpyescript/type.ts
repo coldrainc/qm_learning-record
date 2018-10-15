@@ -14,3 +14,6 @@ let age: number = 37;
 let sentence: string = `Hello, myname is ${nicjname}
 I'll be ${age++} yes old next month`;
 let list: number[] = [1, 2, 3];
+let list2: Array<number> = [1, 2, 3];
+let notSure:any = 4;
+notSure = "fdsfa";
