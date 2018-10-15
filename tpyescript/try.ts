@@ -1,6 +1,6 @@
-function greeting (person) {
+function greeter(person: string) :string{
     return "Hello, " + person + " 你最近又胖了";
 }
 
-let user = "Jane User";
-document.body.innerHTML = greeting(user);
+var user = "Jane User";
+document.body.innerHTML = greeter(user);
