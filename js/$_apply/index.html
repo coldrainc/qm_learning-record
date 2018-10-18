@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> -->
+    <script>
+        // 阻塞型的，因为js是阻塞的所以需要在最后执行
+        // $ domReady事件 比window.onload加载的早一些
+        // $(function() { // 延迟执行 window.onload的代表 页面加载完成后
+        //     const eleUsername = document.querySelector(".username");
+        //     console.log(eleUsername);
+        //     // console.log("window onload");
+        // });
+        // console.log($(".username"));
+
+        // 对比DOMready 和window onload
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     console.log('domcontentload');
+        // })
+        // window.onload = function () {
+        //     console.log('onload');
+        // }
+
+        // $(function() {
+        //     // $('.username').html('yinbao');
+        //     $.getJSON("/dream.json", function(data) {
+        //         console.log(data);
+        //         $(".username").html(data.username);
+        //         $(".motto").html(data.motto);
+        //     });
+        // })
+
+        // 实现ajax
+        document.addEventListener('DOMContentLoaded', function() {
+            const eleUserName = document.querySelector(".username");
+            const eleMotto = document.querySelector('.motto');
+            let xhr = null; // 异步js 主动拉取的核心对象 Ajax
+            // 浏览器嗅探
+            if (window.XMLHttpRequest) {
+                xhr = new XMLHttpRequest();
+                // console.log(xhr);
+            }else{
+                // old browser
+                xhr = new ActiveXObject('Microsoft.XMLHTTP');
+            }
+            // 从页面打开一个去url（.json资源）, 后端数据服务 的通道
+            // 主动拉
+            xhr.open('get', '/dream.json', true);
+            xhr.send();
+            console.log(xhr);
+            xhr.onreadystatechange = function() {
+                // 4 表示所有的资源已经到达浏览器， 200表示请求成功
+                // console.log(xhr.readyState);
+                if (xhr.readyState === 4 && xhr.status == 200) {
+                    console.log(typeof xhr.responseText);
+                    const dream = JSON.parse(xhr.responseText);
+                    console.log(dream);
+                    eleUserName.innerHTML = dream.username;
+                    eleMotto.innerHTML = dream.motto;
+                }
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="box">
+        <div class="username"></div>
+        <div class="motto"></div>
+    </div>
+</body>
+</html>
