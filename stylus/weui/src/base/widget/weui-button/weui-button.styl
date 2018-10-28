@@ -1,0 +1,24 @@
+@import "weui-btn_global"
+@import "weui-btn_primary"
+button, input 
+    &.weui-btn
+        width 100%
+        border-width 0
+        //outline （轮廓）是绘制于元素周围的一条线，位于边框边缘的外围，可起到突出元素的作用。轮廓线不会占据空间，也不一定是矩形。
+        outline 0
+        //appearance 属性允许您使元素看上去像标准的用户界面元素。
+        //normal	将元素呈现为常规元素。
+        //icon	将元素呈现为图标（小图片）。
+        //window	将元素呈现为视口。
+        //button	将元素呈现为按钮。
+        //menu	将元素呈现为一套供用户选择的选项。
+        //field 将元素呈现为输入字段。
+        -webkit-appearance none
+        &:focus
+            outline 0
+    &.weui-btn_inline,&weui-btn_mini
+        width auto
+    &.weui-btn_plain-primary,&.weui-btn_plain-default
+        border-width 1px
+        background-color: transparent
+        

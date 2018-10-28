@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 承诺 ，容器里面放着着耗时的任务.
+        // 任务做完后 resolve (成功), reject(失败)
+        const p = new Promise((resovle, reject) => {
+            setTimeout(() => {
+                console.log('aaa');
+                resolve('over'); // 返回
+            }, 1000)
+        })    
+        p.then(data => { // data是p中resolve返回的东西
+            console.log(data);
+            console.log('bbb');
+        }).catch(err => { // 当reject时返回的值需要用catch来
+            console.log(err);
+        })
+    </script>
+</body>
+</html>
