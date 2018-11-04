@@ -1,0 +1,15 @@
+{
+  "name": "tt",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "chenyuhan1 <1944614333@qq.com> (https://github.com/chenyuhan1)",
+  "license": "MIT",
+  "dependencies": {
+    "got": "^9.3.0"
+  }
+}
