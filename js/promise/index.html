@@ -9,7 +9,7 @@
 <body>
     <script>
         // js 单线程
-        const test =  async () => {
+        const test =  async () => { //异步
            let result = await new Promise((resolve, reject) => {
                setTimeout(() => {
                    console.log('aaa');

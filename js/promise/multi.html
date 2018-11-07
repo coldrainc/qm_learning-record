@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const postsPromise = fetch('https://www.easy-mock.com/mock/5bca9240e6742c1bf8220bbd/kicamp/post');
+        const streetCarsPromise = fetch('http://data.ratp.fr/api/datasets/1.0/search/?q=paris')
+  
+        postsPromise.then((data) => data.json())
+        .then(data => {
+            console.log(data);
+            // 嵌套 异步问题 js天生就有， callbak 回调函数来解决的 回调地狱
+            return streetCarsPromise;
+        }).catch((err) => {
+            console.log(err);
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+        })
+
+        Promise.all([postsPromise, streetCarsPromise])
+        .then((res) => {
+            return Promise.all(res.map(re, (re) => {
+                re.json()
+            }))
+        }).then(res =>{
+            console.log(res)
+        }).catch(err => {
+            console.log(err)
+        })
+    </script>
+</body>
+</html>

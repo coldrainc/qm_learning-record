@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function ajax(callback) {
+        //     var xmlhttp;
+        //     if(window.XMLHttpRequest){
+        //         xmlhttp = new XMLHttpRequest();
+        //     }else{
+        //         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        //     }
+        //     xmlhttp.open('GET', url, true);
+        //     xmlhttp.send();
+        //     xmlhttp.onreadystatechange = function() {
+        //         if(xmlhttp.readystate == 4 && xmlhttp.state == 200) {
+        //             result = xmlhttp.response;
+        //         }
+        //     }
+        // }   
+            
+        function ajax(callback) {
+            // console.log(callback)
+            const xhr = new XMLHttpRequest();
+
+            return function(url) {
+                // console.log('ajax')
+                xhr.open('GET', url, true)
+                xhr.send();
+
+                xhr.onreadystatechange = function() {
+                    if(xhr.readyState == 4 && xhr.state == 200){
+                        callback(xhr.responseText);
+                    }
+                }
+            }
+        }
+        const ajaxId = ajax((data) => {
+            const ajaxInfo = ajax((data) => {
+                const info = JSON.parse(data);
+                console.log(info)
+            });
+            // const id = 1000;
+            const id = JSON.parse(data).id;
+            ajaxInfo(`/info.json?id=${id}`);
+            // console.log(id)
+        });
+        ajaxId('/id.json');
+    </script>
+</body>
+</html>
