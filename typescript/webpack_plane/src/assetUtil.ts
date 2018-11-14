@@ -2,7 +2,7 @@ export const loadImage = (url: string | string[]) => {
     if(!Array.isArray(url)){
         return loadOneImage(url)
     }
-    const loaders = url.map(loadOneImage(url))
+    const loaders = url.map((url) => loadOneImage(url))
     return Promise.all(loaders)
 }
 export const loadOneImage = (url) => {
