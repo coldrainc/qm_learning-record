@@ -1,0 +1,6 @@
+{
+    "compilerOptions": {
+        "module": "es6", // commonjs 一共有三种模块化方案
+        "target": "es5"
+    }
+}
