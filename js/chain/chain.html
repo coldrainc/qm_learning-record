@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>lodash  chain</title>
+</head>
+<body>
+  
+  <!-- <script src="https://cdn.bootcss.com/lodash.js/4.17.11/lodash.core.min.js"></script>  -->
+  <script>
+    // _ 是lodash 命名空间
+    // chain 给我们链式调用的能力
+    
+    // _ lodash 的一个命名空间，就是一个类
+    function chainResult(instance, obj) {
+      // ? 如何判断它是链式调用
+      return  instance._chain ? _.chain(obj) : obj;
+    }
+    var _ = function(obj) {
+      if(!(this instanceof _)) // this 不是 _的实例就返回一个实例
+        return new _(obj);
+      this._wrapped = obj;
+    }
+    _.prototype = {
+      push: function(num) {
+        this._wrapped.push(num);
+        return chainResult(this, this._wrapped);
+      },
+      shift: function() {
+        this._wrapped.shift();
+        return chainResult(this, this._wrapped);
+      },
+      value: function() {
+        return this._wrapped;
+      }
+    }
+    _.chain = function(obj) { // 静态方法不需要new 直接使用类名调用 由于调用了静态方法说明一定是一个实例
+      var instance = _(obj);
+      instance._chain = true;
+      // 直接调用构造函数，不new
+      return instance;
+    }
+    // console.log(typeof _)
+    const arr = _.chain([1, 2, 3, 4])
+      .push(5)
+      .shift()
+      .value();
+      console.log(arr);
+    
+  </script>
+</body>
+</html>

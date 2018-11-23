@@ -1,0 +1,17 @@
+* {margin: 0; padding: 0;}
+  .wrap {
+      width: 640px;
+      margin: 10px auto;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+  }
+  #canvas {
+      position: absolute;
+  }
+  .wrap h1 {
+      color: #00a1f4;
+  }
+  .wrap input {
+      vertical-align: middle;
+  }
