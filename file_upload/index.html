@@ -40,6 +40,7 @@
       </ul>
       <form name="upload">
         <a href="javascript:void(0);" class="btn btn-primary" id="selectbtn">上传文件</a>
+        <a href="javascript:void(0);" class="btn btn-primary" id="submit">去听歌</a>
         <input type="file" name="fileselect" style="display:none" accept="image/*" multiple/>
       </form>
       <div id="eventStatus"></div>
@@ -52,6 +53,10 @@
     const fileselect = document.forms['upload']['fileselect'];
     const selectBtn = document.getElementById('selectbtn');
     const listGroup = document.querySelector('.list-group');
+    const submit = document.getElementById('submit');
+    submit.addEventListener('click', function() {
+      window.location = 'zjl/';
+    })
     fileselect.addEventListener('change', displayFileInfo, false);
     selectBtn.addEventListener('click', function() {
       fileselect.click();

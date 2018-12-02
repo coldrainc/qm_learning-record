@@ -1,0 +1,6 @@
+.test {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #a19f9f;
+}

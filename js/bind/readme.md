@@ -1,0 +1,26 @@
+# bind
+
+1. this 有函数调用方式
+  普通函数 对象的方法， 事件处理函数 闭包
+2. this 作用域手动指定
+  call apply 区别参数 ，call 序列， apply 数组
+  bind 可以实现延后执行 返回一个新函数， 并且内部的this指定为第一个参数
+手写一个bind
+Function.prototype.bind =
+3. bind的展示this闭包 函数式编程 原型链最直接的例子
+this:
+  apply
+    bind是基于apply手动指定this为绑定对象的
+  闭包区域
+    this 由调用方式决定为被绑定的函数就是this self=this 在闭合空间一直存在
+4. 闭包
+  函数嵌套函数，闭包中的变量一直可以被访问
+5. 函数式编程
+  bind 返回一个新函数， 解决了手动事件函数的this丢失，一般的事件listen this 指向了事件对象 target 在react 组件式开发或者是面向对象有需求， 将事件的处理函数作为组件类的方法， 即延迟调用， 同时又手动指定this
+  apply + 函数式
+  return function(){
+    self.apply(context)
+  }
+6. 原型链
+  function.prototype.bind
+ 
