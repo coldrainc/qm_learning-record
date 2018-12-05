@@ -22,6 +22,7 @@
       if(!(this instanceof _)) // this 不是 _的实例就返回一个实例
         return new _(obj);
       this._wrapped = obj;
+      console.log(this);
     }
     _.prototype = {
       push: function(num) {
@@ -36,7 +37,9 @@
         return this._wrapped;
       }
     }
-    _.chain = function(obj) { // 静态方法不需要new 直接使用类名调用 由于调用了静态方法说明一定是一个实例
+    _.chain = function(obj) { 
+      // 静态方法不需要new 直接使用类名调用 
+      console.log(this);
       var instance = _(obj);
       instance._chain = true;
       // 直接调用构造函数，不new

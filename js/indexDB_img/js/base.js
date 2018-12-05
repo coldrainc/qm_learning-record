@@ -28,6 +28,7 @@
       }, false);
       xhr.send();
     }
+    
     const putElephantInDb = function(blob) {
       const readWriteMode = typeof IDBTransaction.READ_WRITE == 'undefined' ? 'readwrite' : IDBTransaction.READ_WRITE;
       // 事物
@@ -50,6 +51,7 @@
     request.onerror = function(event) {
       console.log('error creating/accessing IndexedDB database');
     }
+
     request.onsuccess = function() {
       db = request.result
       db.onerror = function(event) {
@@ -57,6 +59,7 @@
       }
       getImageFile();
     }
+
     request.onupgradeneeded = function(event) {
       console.log(event.target.result);
       createObjectStore(event.target.result);

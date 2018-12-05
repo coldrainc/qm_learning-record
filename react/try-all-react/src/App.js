@@ -45,7 +45,7 @@ class App extends Component {
     })
   }
 
-  componentDidMount() { // 相当于onload
+  componentDidMount() { // 相当于小程序onload
     const url = `https://en.wikipedia.org/w/api.php?action=opensearch&search=Seona+Dancing&format=json&origin=*
     `
     fetch(url)
