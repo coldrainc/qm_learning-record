@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>others</title>
+  <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+  <h1>v-pre & v-cloak</h1>
+  <hr>
+  <div id="app">
+    <div v-pre>对双大括号不做特殊处理{{message}}</div>
+    <div v-cloak>渲染完成后才显示</div>
+    <div v-once>只在第一次渲染数据{{message}}</div>
+    <div><input type="text" v-model="message"></div>
+  </div>
+
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'helloworld'
+      }
+    })
+    console.log(app);
+  </script>
+</body>
+</html>
