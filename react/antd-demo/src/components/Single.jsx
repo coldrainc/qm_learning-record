@@ -54,8 +54,6 @@ class Single extends React.Component {
             <p>{beer.description}</p>
           </div>
 
-         
-
           <div className="deets">
             {this.renderGlass(beer)}
             {this.renderAbv(beer)}
