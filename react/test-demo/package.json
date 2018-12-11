@@ -1,15 +1,11 @@
 {
-  "name": "react_notes",
+  "name": "test-demo",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "lodash": "^4.17.11",
-    "lokijs": "^1.5.5",
-    "moment": "^2.22.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1",
-    "semantic-ui-css": "^2.4.1"
+    "react-scripts": "2.1.1"
   },
   "scripts": {
     "start": "react-scripts start",

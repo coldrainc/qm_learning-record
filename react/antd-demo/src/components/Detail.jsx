@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 class Detail extends Component {
   render() {
     const {name, labels, id} = this.props.beer;
+    // console.log(labels);
     const image = 'https://img14.360buyimg.com/n7/jfs/t20569/97/1194982666/203143/26dfa4f7/5b22050aNfd2ffc77.jpg'
     return (
       <div className="beer">
