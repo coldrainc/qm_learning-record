@@ -79,6 +79,5 @@ class Form extends React.Component {
 
 ReactDOM.render(
   <PreventingTransitionExample>
-    
   </PreventingTransitionExample>
   , document.getElementById('root'));
