@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>computed</title>
+  <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+  <h1>computed</h1>
+  <hr>
+  <div id="app">
+    {{ a }}
+    <input type="number" v-model="num">
+    <p><button @click="add(num)">add</button></p>
+    <p><btn @click.native="add(num)"></btn></p>
+  </div>
+
+  <button onclick="app.add(1)">外部ADD</button>
+  <script type="text/javascript">
+    var btn = {
+      template: `<button>组件ADD</button>`
+    }
+    var app = new Vue({
+      el: '#app',
+      data: {
+        a: 1,
+        num: 0
+      },
+      components: {
+        "btn": btn
+      },
+      methods: {
+        add: function(num) {
+          if(num !== ''){
+            this.a += parseInt(num);
+          }else {
+            this.a++;
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

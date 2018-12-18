@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>extends扩展</title>
+  <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+  <h1>extends扩展</h1>
+  <hr>
+  <div id="app">
+    {{num}}
+    <p><button @click="add">add</button></p>
+  </div>
+
+  <script type="text/javascript">
+    var extendsObj = {
+      updated: function(){
+        console.log('我是扩展的updated');
+      },
+      methods: {
+        add: function() {// 由于这里的add方法和原生的同名所以不会执行这里的方法
+          this.num++;
+          console.log('我是扩展的方法');
+        }
+      }
+    }
+      var app = new Vue({
+      el: '#app',
+      data: {
+        num: 1
+      },
+      methods: {
+        add: function() {
+          console.log('我是原生的方法');
+          this.num++;
+        }
+      },
+      updated: function(){
+        console.log('我是原生的updated方法');
+      },
+      extends: extendsObj,
+      //delimiters: ['${', '}'] // 自定义插值方式
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>computed</title>
+  <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+  <h1>computed</h1>
+  <hr>
+  <div id="app">
+    <p>今日温度：{{temperature}}℃</p>
+    <p>穿衣建议: {{dressing}}</p>
+    <button @click="raises">升高</button>
+    <button @click="reduces">降低</button>
+  </div>
+
+  <script type="text/javascript">
+    var suggest = ['T恤短袖', '夹克长裙', '棉衣羽绒服'];
+    var app = new Vue({
+      el: '#app',
+      data: {
+        temperature: 14,
+        dressing: '夹克长裙'
+      },
+      methods: {
+        raises: function() {
+          this.temperature += 5;
+        },
+        reduces: function() {
+          this.temperature -= 5;
+        }
+      },
+      watch: {// 用于监控temperature变化， 当前面的是新值后面的老的
+        temperature: function(newVal, oldVal) {
+          if(newVal >= 26){
+            this.dressing = suggest[0];
+          }else if(newVal < 26 && newVal > 0){
+            this.dressing = suggest[1];
+          }else {
+            this.dressing = suggest[2];
+          }
+        }
+      }
+    })
+    // 也可以写在 定义的Vue构造器外面
+    app.$watch('temperature', function(newVal, oldVal) {
+      if(newVal >= 26){
+        this.dressing = suggest[0];
+      }else if(newVal < 26 && newVal > 0){
+        this.dressing = suggest[1];
+      }else {
+        this.dressing = suggest[2];
+      }
+    });
+  </script>
+</body>
+</html>

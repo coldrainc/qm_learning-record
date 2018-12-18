@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>computed</title>
+  <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+  <h1>computed</h1>
+  <hr>
+  <div id="app">
+    {{num}}
+    <p><button @click="add">add</button></p>
+  </div>
+
+ 
+  <script type="text/javascript">
+    var addConsole = {
+      updated: function() {// 就是Vue构造器函数的生命周期函数
+        console.log('数据发生变化' + this.num);
+      }
+    }
+    // 这里不加s这里的混入会最先执行
+    Vue.mixin({
+      updated: function() {
+        console.log('我是全局的混入' + this.num);
+      }
+    })
+    var app = new Vue({
+      el: '#app',
+      data: {
+        num: 1
+      },
+      methods: {
+        add: function() {
+          this.num++;
+        }
+      },
+      updated: function() {
+        console.log('原生的updated' + this.num);
+      }, // mixins混入的会先执行
+      mixins: [addConsole]
+    })
+  </script>
+</body>
+</html>

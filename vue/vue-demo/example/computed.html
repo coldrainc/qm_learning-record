@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>computed</title>
+  <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+  <h1>computed</h1>
+  <hr>
+  <div id="app">
+    {{newPrice}}
+    <ul>
+      <li v-for="item in reversNews">{{item.title}}--{{item.date}}</li>
+    </ul>
+  </div>
+
+  <script type="text/javascript">
+    var newList = [
+      {title: '1231we3',date: '2018/12/16'},
+      {title: '1231ew23',date: '2018/12/13'},
+      {title: '123sda23',date: '2018/12/18'},
+      {title: '123cx23',date: '2018/12/11'},
+    ]
+    var app = new Vue({
+      el: '#app',
+      data: {
+        price: 100,
+        newList: newList
+      },
+      computed: {
+        newPrice: function() {
+          return this.price = this.price + '￥';
+        },
+        reversNews: function() {
+          return this.newList.reverse();
+        }
+      }
+    })
+  </script>
+</body>
+</html>

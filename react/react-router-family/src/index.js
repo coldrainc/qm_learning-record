@@ -1,123 +1,106 @@
 import React from 'react';
-import {TransitionGroup, CSSTransition } from 'react-transition-group';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Link, Switch, Redirect} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Redirect, withRouter} from 'react-router-dom';
 
-const styles= {
+var fakeAuth = {
+  isAuthenticated: false,
+  authenticate(cb) {
+    this.isAuthenticated = true;
+    setTimeout(cb, 1000);
+  },
+  signout(cb) {
+    this.isAuthenticated = false;
+    setTimeout(cb, 1000);
+  }
+}
 
-};
-styles.fill = {
-  position: 'absolute',
-  left: 0,
-  right: 0,
-  bottom: 0,
-  top: 0,
-  // background: 'red'
-}
-styles.content = {
-  ...styles.fill,
-  top: '40px',
-  textAlign: 'center'
-}
-styles.nav = {
-  display: 'flex',
-  position: 'absolute',
-  padding: 0,
-  margin: 0,
-  top: 0,
-  height: '40px',
-  width: '100%'
-}
-styles.navItem = {
-  flex: 1,
-  textAlign: 'center',
-  listStyleType: 'none',
-  padding: '10px',
-}
-styles.hsl = {
-  ...styles.fill,
-  color: "white",
-  paddingTop: "20px",
-  fontSize: "30px"
-};
-
-styles.rgb = {
-  ...styles.fill,
-  color: "white",
-  paddingTop: "20px",
-  fontSize: "30px"
-};
-
-function AnimationExample() {
+function AuthExample() {
   return (
     <Router>
       <div>
-        <Route render={({location}) => (
-          <div style={styles.fill}>
-            {/* {JSON.stringify(location)} */}
-            <Route 
-              exact 
-              path="/" 
-              render={() => (<Redirect to="/hsl/10/90/50"></Redirect>)}
-            >
-            </Route>
-            <ul style={styles.nav}>
-              <NavLink to="/hsl/10/90/50">Red</NavLink>
-              <NavLink to="/hsl/120/100/40">Green</NavLink>
-              <NavLink to="/rgb/33/150/243">Blue</NavLink>
-              <NavLink to="/rgb/240/98/246">Pink</NavLink>
-            </ul>
-            <div style={styles.content}>
-              <Switch location={location}> 
-                <Route exact path="/hsl/:h/:s/:l" component={HSL}></Route>
-                <Route exact path="/rgb/:r/:g/:b" component={RGB}></Route>
-              </Switch>
-            </div>
-          </div>
-        )}>
-        </Route>
+        <AuthButton/>
+        <ul>
+          <li>
+            <Link to="/public">Public Page</Link>
+          </li>
+          <li>
+            <Link to="/protected">Protected Page</Link> 
+          </li>
+        </ul>
+        <Route path="/public" component={Public}></Route>
+        <Route path="/login" component={Login}></Route>
+        <PrivateRoute path="/protected" component={Protected}></PrivateRoute>
       </div>
     </Router>
   );
 }
 
-function NavLink(props) {
-  return(
-    <li style={styles.navItem} >
-      <Link {...props}></Link>
-      {/* <p>{props.to}</p> */}
-    </li>
-  );
+class Login extends React.Component {
+  state =  {
+    redirectToReferrer: false
+  }
+  login = () => {
+    fakeAuth.authenticate(() => {
+      this.setState({
+        redirectToReferrer: true
+      })
+    })
+  }
+  render() {
+    let {from } = this.props.location.state || {from: {pathname: '/'}};
+    console.log(from);
+    if(this.state.redirectToReferrer)
+      return (
+        <Redirect to={from}/>
+      )
+
+    return (
+      <div>
+        <p>You must log in view the page at {from.pathname}</p>
+        <button onClick={this.login}>Log in</button>
+      </div>
+    )
+  }
 }
 
-function HSL({match: {params}}) { // 解构后还可以继续解构
+const AuthButton = withRouter(({history}) => {
   return (
-    <div style={{
-      ...styles.fill, 
-      ...styles.hsl, 
-      background: `hsl(${params.h}, ${params.s}%, ${params.l}%)`
-      }}
-    >
-      hsl({params.h}, {params.s}%, {params.l}%)
-    </div>
-  );
-}
+    fakeAuth.isAuthenticated?
+    (<p>Welcom!<button onClick={() => {
+      fakeAuth.signout(() => {
+        history.push('/')
+      });
+    }}>Sign out</button></p>):
+    (<p>You are not logged in.</p>)
+  )
+})
 
-function RGB({ match: { params } }) {
+function Public() {
   return (
-    <div
-      style={{
-        ...styles.fill,
-        ...styles.rgb,
-        background: `rgb(${params.r}, ${params.g}, ${params.b})`
-      }}
-    >
-      rgb(
-      {params.r}, {params.g}, {params.b})
-    </div>
+    <div>Public</div>
   );
 }
-
-ReactDOM.render(
-  <AnimationExample />
-  , document.getElementById('root'));
+function Protected() {
+  return (
+    <div>Protected</div>
+  );
+}
+function PrivateRoute({component: Component, ...rest}) {
+  return (
+    <Route
+      {...rest}
+      render={(props) => (
+        fakeAuth.isAuthenticated?
+        <Component/>:
+        <Redirect
+          to={{
+            pathname: '/login',
+            state: {from: props.location}
+          }}
+        />
+      )}
+    >
+    </Route>
+  )
+}
+ReactDOM.render(<AuthExample/>, document.getElementById('root'));
