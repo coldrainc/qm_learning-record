@@ -48,7 +48,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     getFilmData: () => {
-      dispatch((dispatch) => filmAction(dispatch))
+      dispatch(filmAction())
     }
   }
 }
