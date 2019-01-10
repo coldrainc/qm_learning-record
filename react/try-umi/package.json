@@ -1,0 +1,18 @@
+{
+  "name": "try-umi",
+  "version": "0.1.0",
+  "description": "脚手架 约定高于代码的",
+  "main": ".umirc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "chenyuhan1 <1944614333@qq.com> (https://github.com/chenyuhan1)",
+  "license": "MIT",
+  "dependencies": {
+    "antd-mobile": "^2.2.8",
+    "react-stick": "^2.3.0",
+    "react-sticky": "^6.0.3",
+    "umi-plugin-react": "^1.3.2"
+  }
+}
