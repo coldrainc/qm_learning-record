@@ -1,6 +1,6 @@
 import store from './store';
 import { addToCart, updateCart, deleteFromCart } from './actions/cart-actions';
-import {addToProduct} from './actions//products-action';
+import {addToProduct} from './actions/products-action';
 
 // console.log('initial state', store.getState());
 

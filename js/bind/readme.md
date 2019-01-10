@@ -23,4 +23,3 @@ this:
   }
 6. 原型链
   function.prototype.bind
- 

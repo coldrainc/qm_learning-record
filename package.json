@@ -1,12 +1,19 @@
 {
   "dependencies": {
+    "antd-mobile": "^2.2.8",
     "create-react-app": "^2.1.1",
     "event-stream": "^3.3.4",
     "global": "^4.3.2",
+    "koa": "^2.6.2",
+    "koa-router": "^7.4.0",
     "live-server": "^1.2.0",
     "lodash": "^4.17.11",
     "lokijs": "^1.5.5",
     "moment": "^2.22.2",
+    "prop-types": "^15.6.2",
+    "react-redux": "^6.0.0",
+    "react-sticky": "^6.0.3",
+    "redux": "^4.0.1",
     "stylus": "^0.54.5",
     "vue": "^2.5.18"
   },
