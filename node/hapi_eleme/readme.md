@@ -10,3 +10,5 @@ register 到app.js /documentation
 只要在每个router 里配置一下tags 和discription
 
 migration 是数据表对象文件，配置好后，再执行就可以在数据库中创建表
+
+sequelize + modeld define

@@ -1,4 +1,4 @@
-export const createStore = (state, storeChange) => {
+export const createStore = (storeChange, state) => {
   // 订阅， 发布者模式
   const listeners = [];
   let store = state || {};

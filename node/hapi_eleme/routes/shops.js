@@ -1,3 +1,5 @@
+const models = require('../models')
+// 从model中拿到数据
 const GROUP_NAME = 'shops';
 
 module.exports = [
@@ -5,7 +7,8 @@ module.exports = [
     method: 'GET',
     path: `/${GROUP_NAME}`,
     handler: async(request, reply) => {
-      reply()
+      const results = await models.shops.findAll();
+      reply(results)
     },
     config: {
       tags: ['api', GROUP_NAME],

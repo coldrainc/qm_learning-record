@@ -19,18 +19,18 @@ module.exports = {
       updated_at: Sequelize.DATE,
     },{
       // 时间戳
-      timestamps: true, 
-      // 强调
-      underscored: true, 
-      // 偏执
-      paranoid: true, 
-      // 冻结表名，如果不加会在创建表的时候在后面加上 (s)
-      // freezeTableName: true, 
-      // 表名
-      // tableName: 'user', 
-      // 编码
-      charset: 'utf8', 
-      collate: 'utf8_general_ci'
+      // timestamps: true, 
+      // // 强调
+      // underscored: true, 
+      // // 偏执
+      // paranoid: true, 
+      // // 冻结表名，如果不加会在创建表的时候在后面加上 (s)
+      // // freezeTableName: true, 
+      // // 表名
+      // // tableName: 'user', 
+      // // 编码
+      // charset: 'utf8', 
+      // collate: 'utf8_general_ci'
     }
   ),
 

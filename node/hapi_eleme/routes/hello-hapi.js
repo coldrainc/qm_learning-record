@@ -6,11 +6,11 @@ module.exports = [
       reply('hapi');
     },
     config: {
-      tags: ['api', 'tests'],
+      tags: ['api', 'root/'],
       description: '测试hello-hapi'
     }
-  }
-  ,{
+  },
+  {
     method: 'GET',
     path: '/test',
     handler: (request, reply) => {

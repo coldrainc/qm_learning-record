@@ -11,7 +11,7 @@ export class Provider extends Component {
   }
   getChildContext() {
     const state = this.props.store;
-    const { store, dispatch, subscribe, getState } = createStore(state, storeChange)
+    const { store, dispatch, subscribe, getState } = createStore(storeChange, state)
     return {
       store,
       dispatch,
