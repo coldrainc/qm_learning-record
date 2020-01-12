@@ -8,8 +8,13 @@ import Header from './Header'
 
 class App extends React.Component {
   render() {
+    const style = {
+      backgroundColor: 'red',
+      color: 'white',
+      fontSize: '14px'
+    }
     return (
-      <Provider value={{title: 'React In Patterns'}}>
+      <Provider value={{title: 'React In Patterns'}} style={ style }>
         <Header />
       </Provider>
     )
