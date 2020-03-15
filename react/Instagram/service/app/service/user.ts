@@ -49,7 +49,7 @@ export default class UserService extends Service {
         ctx.status = 200;
         ctx.returnBody(200, "注册成功", {
             userId: userInfo.dataValues.userId,
-            flag: true
+            flag: true  
         })
         return userInfo.dataValues;
     }

@@ -95,6 +95,7 @@ export default class qiniuService extends Service {
         scope: '', // 上传空间
         expires: 7200
     }
+
     // ....
 }
 
