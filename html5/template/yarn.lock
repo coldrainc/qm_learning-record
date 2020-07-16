@@ -6,3 +6,8 @@ loadsh@^0.0.3:
   version "0.0.3"
   resolved "http://registry.npm.taobao.org/loadsh/download/loadsh-0.0.3.tgz#ddd567c7820be2dca94472697c2a1a7e6144c230"
   integrity sha1-3dVnx4IL4typRHJpfCoafmFEwjA=
+
+lodash@^4.17.11:
+  version "4.17.19"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.19.tgz#e48ddedbe30b3321783c5b4301fbd353bc1e4a4b"
+  integrity sha512-JNvd8XER9GQX0v2qJgsaN/mzFCNA5BRe/j8JN9d+tWyGLSodKQHKFicdwNYzWwI3wjRnaKPsGj1XkBjx/F96DQ==
