@@ -9,7 +9,7 @@
     "live-server": "^1.2.0",
     "lodash": "^4.17.11",
     "lokijs": "^1.5.5",
-    "moment": "^2.22.2",
+    "moment": "^2.29.4",
     "prop-types": "^15.6.2",
     "react-redux": "^6.0.0",
     "react-sticky": "^6.0.3",
